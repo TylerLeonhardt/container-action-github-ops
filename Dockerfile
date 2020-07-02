@@ -1,6 +1,13 @@
 FROM mcr.microsoft.com/powershell:lts-alpine-3.10
+SHELL ["pwsh"]
 
-RUN pwsh -c Install-Module PowerShellForGitHub -Force -Scope AllUsers
+RUN Install-Module PowerShellForGitHub -Force -Scope AllUsers
+
+RUN if (!$env:GITHUB_TOKEN) { throw "Environment variable for GITHUB_TOKEN not found" } \
+    # Setup PowerShellForGitHub with GITHUB_TOKEN
+    $secureString = $env:GITHUB_TOKEN | ConvertTo-SecureString -AsPlainText -Force \
+    $cred = [System.Management.Automation.PSCredential]::new("username is ignored", $secureString) \
+    Set-GitHubAuthentication -Credential $cred
 
 COPY LICENSE README.md /
 
