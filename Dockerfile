@@ -1,6 +1,8 @@
 FROM mcr.microsoft.com/powershell:lts-alpine-3.10
 
-RUN pwsh -c Install-Module PowerShellForGitHub -Force
+CMD [ "pwsh", "-Login" ]
+
+RUN Install-Module PowerShellForGitHub -Force
 
 COPY LICENSE README.md /
 
