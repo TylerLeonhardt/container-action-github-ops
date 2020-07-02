@@ -1,3 +1,5 @@
+$ProgressPreference = 'Ignore'
+
 if (!$env:GITHUB_TOKEN) {
     throw "Environment variable for GITHUB_TOKEN not found"
 }
