@@ -12,5 +12,4 @@ $repoArgs = $env:GITHUB_REPOSITORY -split '/'
 Set-GitHubConfiguration -DefaultOwnerName $repoArgs[0] -DefaultRepositoryName $repoArgs[1]
 
 # Put custom code after here
-
 Get-GitHubPullRequest | Select-Object title,number,html_url
