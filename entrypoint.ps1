@@ -11,4 +11,4 @@ Set-GitHubConfiguration -DefaultOwnerName $repoArgs[0] -DefaultRepositoryName $r
 
 # Put custom code after here
 
-Get-GitHubPullRequest | Select-Object title,number,http_url
+Get-GitHubPullRequest | Select-Object title,number,html_url
