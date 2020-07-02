@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/powershell:lts-alpine-3.10
-SHELL ["pwsh"]
+SHELL ["pwsh", "-Command"]
 
 RUN Install-Module PowerShellForGitHub -Force -Scope AllUsers
 
